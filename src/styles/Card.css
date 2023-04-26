@@ -1,0 +1,8 @@
+.card {
+    border: solid 2px black;
+}
+
+.quantity {
+    display: flex;
+    gap: 5px;
+}
