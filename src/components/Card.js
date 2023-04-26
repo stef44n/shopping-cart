@@ -1,5 +1,7 @@
 import React from "react";
 import "../styles/Card.css";
+import plus from "../assets/icons/plus.svg";
+import minus from "../assets/icons/minus.svg";
 
 export default function Card(props) {
     //set card state here
@@ -37,11 +39,21 @@ export default function Card(props) {
                     onClick={decrementQuantity}
                     disabled={quantity === 0 ? true : false}
                 >
-                    -
+                    <img
+                        className="quantity-button"
+                        src={minus}
+                        alt="subtract item"
+                    />
                 </button>
 
                 <p>{quantity}</p>
-                <button onClick={incrementQuantity}>+</button>
+                <button onClick={incrementQuantity}>
+                    <img
+                        className="quantity-button"
+                        src={plus}
+                        alt="add item"
+                    />
+                </button>
             </div>
             <button>Add to cart</button>
         </div>
