@@ -3,6 +3,7 @@ import Card from "./Card";
 import "../styles/Shop.css";
 import React from "react";
 import cartIcon from "../assets/icons/cart.svg";
+import { Link } from "react-router-dom";
 
 export default function Shop() {
     const allFruits = fruitsArray.map((fruit) => (
@@ -25,10 +26,12 @@ export default function Shop() {
         <div>
             Shopping page
             <p>products will be here</p>
-            <div className="cart-fixed">
-                <img className="cart-icon" src={cartIcon} alt="cart-icon" />(
-                {data})
-            </div>
+            <Link to="/cart">
+                <div className="cart-fixed">
+                    <img className="cart-icon" src={cartIcon} alt="cart-icon" />
+                    ({data})
+                </div>
+            </Link>
             <div className="products">{allFruits}</div>
         </div>
     );
