@@ -1,4 +1,5 @@
 import React from "react";
+// import Cart from "./Cart";
 import "../styles/Card.css";
 import plus from "../assets/icons/plus.svg";
 import minus from "../assets/icons/minus.svg";
@@ -7,9 +8,13 @@ export default function Card(props) {
     //set card state here
     const [quantity, setQuantity] = React.useState(1);
 
-    // let resetAll = setClickedState(props.reSet);
-    // let resetAll = props.reSet ? setClickedState(true) : false;
-    // console.log(`%c PROPS.RESET: ${resetAll}`, "background: lightgrey");
+    const [cardState, setCardState] = React.useState({
+        name: props.name,
+        price: props.price,
+        image: props.imageSource,
+        qty: quantity,
+        total: 0,
+    });
 
     function decrementQuantity() {
         setQuantity((prevQuantity) => prevQuantity - 1);
@@ -19,12 +24,43 @@ export default function Card(props) {
         setQuantity((prevQuantity) => prevQuantity + 1);
     }
 
+    // function addToCart() {
+    //     const productName = props.name;
+    //     const productPrice = props.price;
+    //     let productQty = quantity;
+    //     let productTotal = quantity * productPrice; // round to 2 dp
+    //     // console.log(event.currentTarget);
+    //     // console.log(props.id);
+    //     let itemInfo = {
+    //         name: productName,
+    //         price: productPrice,
+    //         qty: productQty,
+    //         total: productTotal,
+    //     };
+
+    //     console.log(itemInfo);
+    //     console.log(cardState);
+
+    //     return itemInfo;
+    // }
+
+    React.useEffect(() => {
+        setCardState((prevState) => {
+            return {
+                ...prevState,
+                qty: quantity,
+                total: prevState.price * quantity,
+            };
+        });
+    }, [quantity]);
+
     return (
         <div
             className="card"
             // className={`card ${clickedState}`}
             // value={`${clickedState}`}
-            onClick={props.handleClick}
+            // onClick={props.handleClick}
+            id={props.name}
         >
             <h2>{props.name}</h2>
             <img
@@ -46,7 +82,7 @@ export default function Card(props) {
                     />
                 </button>
 
-                <p>{quantity}</p>
+                <p id={`currentQuantity-${props.name}`}>{quantity}</p>
                 <button onClick={incrementQuantity}>
                     <img
                         className="quantity-button"
@@ -55,7 +91,15 @@ export default function Card(props) {
                     />
                 </button>
             </div>
-            <button>Add to cart</button>
+            {/* {<button onClick={addToCart}>Add to cart (card)</button>} */}
+            {
+                <button
+                    onClick={() => props.childToParent(cardState)}
+                    disabled={quantity === 0 ? true : false}
+                >
+                    Add to cart (shop func)
+                </button>
+            }
         </div>
     );
 }
