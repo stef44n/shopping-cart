@@ -5,3 +5,19 @@
     margin: 0 auto;
     gap: 20px;
 }
+
+.cart-fixed {
+    background-color: yellow;
+    position: fixed;
+    right: 0px;
+    padding: 20px 30px;
+    width: fit-content;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    border-radius: 20px 0 0 20px;
+}
+
+.cart-icon {
+    height: 30px;
+}
