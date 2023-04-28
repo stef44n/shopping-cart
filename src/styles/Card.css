@@ -1,8 +1,30 @@
 .card {
     border: solid 2px black;
+    background-color: aliceblue;
 }
 
 .quantity {
     display: flex;
     gap: 5px;
+}
+
+.quantity-button {
+    height: 20px;
+}
+
+div.quantity > button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.price {
+    background-color: whitesmoke;
+    position: relative;
+    width: fit-content;
+    padding: 10px 20px;
+    margin: 0;
+    bottom: 25px;
+    left: 10px;
+    box-shadow: 2px 2px gray;
 }
