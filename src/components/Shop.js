@@ -1,5 +1,6 @@
 import fruitsArray from "../assets/fruits";
 import Card from "./Card";
+import Cart from "./Cart";
 import "../styles/Shop.css";
 import React from "react";
 import cartIcon from "../assets/icons/cart.svg";
@@ -16,10 +17,23 @@ export default function Shop() {
         />
     ));
 
-    const [data, setData] = React.useState(0);
+    const [cartQty, setCartQty] = React.useState(0);
+    const [cartItems, setCartItems] = React.useState("empty");
 
     function childToParent(childData) {
-        setData((prevData) => prevData + childData);
+        let qty = childData.qty;
+        setCartQty((prevData) => prevData + qty);
+        console.table(childData);
+        console.log(cartItems);
+        if (cartItems === "empty") {
+            console.log("empty array");
+            return setCartItems([childData]);
+        } else {
+            setCartItems((prevData) => {
+                return [...prevData, childData];
+            });
+        }
+        console.log(cartItems);
     }
 
     return (
@@ -29,10 +43,11 @@ export default function Shop() {
             <Link to="/cart">
                 <div className="cart-fixed">
                     <img className="cart-icon" src={cartIcon} alt="cart-icon" />
-                    ({data})
+                    ({cartQty})
                 </div>
             </Link>
             <div className="products">{allFruits}</div>
+            <Cart />
         </div>
     );
 }
