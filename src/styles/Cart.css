@@ -1,0 +1,15 @@
+.cart-card {
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.cart-image {
+    height: 50px;
+}
+
+.cart {
+    border: solid 2px;
+    width: 60vw;
+    margin: 0 auto;
+}
