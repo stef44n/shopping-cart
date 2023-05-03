@@ -10,6 +10,7 @@ export default function Shop() {
     const allFruits = fruitsArray.map((fruit) => (
         <Card
             key={fruit.id}
+            id={fruit.id}
             name={fruit.name}
             price={fruit.price}
             imageSource={fruit.image}
@@ -18,7 +19,7 @@ export default function Shop() {
     ));
 
     const [cartQty, setCartQty] = React.useState(0);
-    const [cartItems, setCartItems] = React.useState(["empty"]);
+    const [cartItems, setCartItems] = React.useState([]);
 
     const [togglePage, setTogglePage] = React.useState(true);
 
@@ -27,15 +28,64 @@ export default function Shop() {
         setCartQty((prevData) => prevData + qty);
         console.table(childData);
         console.log(cartItems);
-        if (cartItems === "empty") {
-            console.log("empty array");
-            return setCartItems([childData]);
-        } else {
-            setCartItems((prevData) => {
-                return [...prevData, childData];
+
+        const existingItem = cartItems.find((item) => item.id === childData.id);
+        if (existingItem) {
+            const updatedItems = cartItems.map((item) => {
+                if (item.id === childData.id) {
+                    return {
+                        ...item,
+                        qty: item.qty + childData.qty,
+                        total: (
+                            Math.round(
+                                (Number(item.total) + childData.total) * 100
+                            ) / 100
+                        ).toFixed(2),
+                    };
+                } else {
+                    return item;
+                }
             });
+            setCartItems(updatedItems);
+        } else {
+            const newItems = [...cartItems, childData];
+            setCartItems(newItems);
         }
-        console.log(cartItems);
+
+        // console.log(existingItems);
+
+        // setCartItems((prevData) => {
+        //     return [...prevData, childData];
+        // });
+
+        // if (cartItems[0] === "empty") {
+        //     console.log("empty array");
+        //     return setCartItems([childData]);
+        // } else {
+        //     setCartItems((prevData) => {
+        //         for (let i = 0; i < prevData.length; i++) {
+        //             if (prevData[i].name === childData.name) {
+        //                 console.log("same name");
+        //                 return [
+        //                     {
+        //                         ...prevData,
+        //                         // childData
+        //                         id: childData.id,
+        //                         image: childData.image,
+        //                         name: "Banana",
+        //                         price: 22,
+        //                         qty: 3,
+        //                         total: 35,
+        //                     },
+        //                 ];
+        //             } else {
+        //                 console.log("new name");
+        //                 return [...prevData, childData];
+        //             }
+        //         }
+        //     });
+        // }
+        // console.log(cartItems);
     }
 
     function shopCartToggle() {
@@ -45,6 +95,7 @@ export default function Shop() {
     const allCartItems = cartItems.map((item) => (
         <Cart
             key={item.id}
+            id={item.id}
             name={item.name}
             price={item.price}
             imageSource={item.image}
