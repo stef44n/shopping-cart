@@ -1,3 +1,33 @@
+body {
+    background-image: url("../assets/backgrounds/orange-pattern.jpg");
+}
+
 img {
     height: 200px;
+}
+
+.home-squares {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: min-content;
+    margin: 0 auto;
+    gap: 20px;
+    background-color: teal;
+    border-radius: 10px;
+    margin-top: 20px;
+    padding: 20px;
+    color: whitesmoke;
+}
+
+.home-squares > * {
+    align-self: center;
+    justify-self: center;
+    border-radius: 10px;
+}
+
+.centre-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
