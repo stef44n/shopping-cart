@@ -9,6 +9,7 @@ export default function Card(props) {
     const [quantity, setQuantity] = React.useState(1);
 
     const [cardState, setCardState] = React.useState({
+        id: props.id,
         name: props.name,
         price: props.price,
         image: props.imageSource,
@@ -49,7 +50,11 @@ export default function Card(props) {
             return {
                 ...prevState,
                 qty: quantity,
-                total: prevState.price * quantity,
+                total: Number(
+                    (
+                        Math.round(prevState.price * quantity * 100) / 100
+                    ).toFixed(2)
+                ),
             };
         });
     }, [quantity]);
@@ -69,7 +74,7 @@ export default function Card(props) {
                 alt="card"
                 // data-value={`${clickedState}`}
             />
-            <p>${props.price}</p>
+            <p className="price">${props.price}</p>
             <div className="quantity">
                 <button
                     onClick={decrementQuantity}
