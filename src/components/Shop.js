@@ -58,43 +58,14 @@ export default function Shop() {
         }
 
         // console.log(existingItems);
-
-        // setCartItems((prevData) => {
-        //     return [...prevData, childData];
-        // });
-
-        // if (cartItems[0] === "empty") {
-        //     console.log("empty array");
-        //     return setCartItems([childData]);
-        // } else {
-        //     setCartItems((prevData) => {
-        //         for (let i = 0; i < prevData.length; i++) {
-        //             if (prevData[i].name === childData.name) {
-        //                 console.log("same name");
-        //                 return [
-        //                     {
-        //                         ...prevData,
-        //                         // childData
-        //                         id: childData.id,
-        //                         image: childData.image,
-        //                         name: "Banana",
-        //                         price: 22,
-        //                         qty: 3,
-        //                         total: 35,
-        //                     },
-        //                 ];
-        //             } else {
-        //                 console.log("new name");
-        //                 return [...prevData, childData];
-        //             }
-        //         }
-        //     });
-        // }
-        // console.log(cartItems);
     }
 
-    function shopCartToggle() {
-        setTogglePage((prevData) => !prevData);
+    function toggleShop() {
+        setTogglePage(true);
+    }
+
+    function toggleCart() {
+        setTogglePage(false);
     }
 
     const allCartItems = cartItems.map((item) => (
@@ -111,24 +82,25 @@ export default function Shop() {
 
     return (
         <div>
-            Shopping page
-            <p>products will be here</p>
+            {/* Shopping page
+            <p>products will be here</p> */}
             {/* <Link to="/cart"> */}
             <div className="cart-fixed">
                 <img className="cart-icon" src={cartIcon} alt="cart-icon" />(
                 {cartQty})
+                <button onClick={() => toggleCart()}>Go to cart</button>
             </div>
+            {!togglePage && (
+                <button onClick={() => toggleShop()}>Back to products</button>
+            )}
             {/* </Link> */}
-            <button onClick={() => shopCartToggle()}>
-                Show cart / hide shop
-            </button>
             {togglePage && <div className="products">{allFruits}</div>}
             {!togglePage && cartQty === 0 && (
                 <div className="cart">The cart is empty...</div>
             )}
             {!togglePage && cartQty !== 0 && (
                 <div className="cart">
-                    The cart is NOT empty... items in cart: {cartQty}
+                    {/* The cart is NOT empty... items in cart: {cartQty} */}
                     <div className="cart-card">
                         <h2> </h2>
                         <h2>Item</h2>
