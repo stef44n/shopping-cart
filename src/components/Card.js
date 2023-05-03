@@ -25,55 +25,22 @@ export default function Card(props) {
         setQuantity((prevQuantity) => prevQuantity + 1);
     }
 
-    // function addToCart() {
-    //     const productName = props.name;
-    //     const productPrice = props.price;
-    //     let productQty = quantity;
-    //     let productTotal = quantity * productPrice; // round to 2 dp
-    //     // console.log(event.currentTarget);
-    //     // console.log(props.id);
-    //     let itemInfo = {
-    //         name: productName,
-    //         price: productPrice,
-    //         qty: productQty,
-    //         total: productTotal,
-    //     };
-
-    //     console.log(itemInfo);
-    //     console.log(cardState);
-
-    //     return itemInfo;
-    // }
-
     React.useEffect(() => {
         setCardState((prevState) => {
             return {
                 ...prevState,
                 qty: quantity,
-                total: Number(
-                    (
-                        Math.round(prevState.price * quantity * 100) / 100
-                    ).toFixed(2)
-                ),
+                total: (
+                    Math.round(Number(prevState.price) * quantity * 100) / 100
+                ).toFixed(2),
             };
         });
     }, [quantity]);
 
     return (
-        <div
-            className="card"
-            // className={`card ${clickedState}`}
-            // value={`${clickedState}`}
-            // onClick={props.handleClick}
-            id={props.name}
-        >
+        <div className="card" id={props.name}>
             <h2>{props.name}</h2>
-            <img
-                className="card-image"
-                src={props.imageSource}
-                alt="card"
-                // data-value={`${clickedState}`}
-            />
+            <img className="card-image" src={props.imageSource} alt="card" />
             <p className="price">${props.price}</p>
             <div className="quantity">
                 <button
