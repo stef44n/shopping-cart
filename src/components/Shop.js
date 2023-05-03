@@ -19,13 +19,17 @@ export default function Shop() {
     ));
 
     const [cartQty, setCartQty] = React.useState(0);
+    const [cartTotal, setCartTotal] = React.useState(0);
     const [cartItems, setCartItems] = React.useState([]);
 
     const [togglePage, setTogglePage] = React.useState(true);
 
     function childToParent(childData) {
         let qty = childData.qty;
+        let tot = childData.total;
         setCartQty((prevData) => prevData + qty);
+        setCartTotal((prevData) => (Number(prevData) + Number(tot)).toFixed(2));
+
         console.table(childData);
         console.log(cartItems);
 
@@ -38,7 +42,8 @@ export default function Shop() {
                         qty: item.qty + childData.qty,
                         total: (
                             Math.round(
-                                (Number(item.total) + childData.total) * 100
+                                (Number(item.total) + Number(childData.total)) *
+                                    100
                             ) / 100
                         ).toFixed(2),
                     };
@@ -127,11 +132,18 @@ export default function Shop() {
                     <div className="cart-card">
                         <h2> </h2>
                         <h2>Item</h2>
-                        <h2>Price</h2>
+                        <h2>Price ($)</h2>
                         <h2>Quantity</h2>
-                        <h2>Total</h2>
+                        <h2>Total ($)</h2>
                     </div>
                     {allCartItems}
+                    <div className="cart-card">
+                        <h2> </h2>
+                        <h2> </h2>
+                        <h2> </h2>
+                        <h2>TOTAL:</h2>
+                        <h2>${cartTotal}</h2>
+                    </div>
                 </div>
             )}
         </div>
