@@ -2,6 +2,7 @@
     display: grid;
     justify-content: space-between;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    margin: 5px 0;
 }
 
 .cart-image {
@@ -9,7 +10,17 @@
 }
 
 .cart {
-    border: solid 2px;
-    width: 60vw;
+    border: solid 2px teal;
+    width: 40vw;
     margin: 0 auto;
+    background-color: white;
+    border-radius: 15px;
+}
+
+.cart-card > * {
+    justify-self: center;
+}
+
+.cart-card > img {
+    justify-self: right;
 }
