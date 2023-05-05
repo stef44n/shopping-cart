@@ -1,9 +1,10 @@
 header {
-    background-color: mediumslateblue;
+    background-color: teal;
     padding: 30px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 20px;
 }
 
 header > h1 {
