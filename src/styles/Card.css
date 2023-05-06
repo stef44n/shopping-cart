@@ -40,7 +40,8 @@ div.quantity > button {
 }
 
 .card > button {
-    background-color: aliceblue;
+    background-color: turquoise;
+    border: white solid 1px;
     padding: 10px 20px;
     border-radius: 5px;
     margin-bottom: 10px;
