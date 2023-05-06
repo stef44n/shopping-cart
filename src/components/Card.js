@@ -66,10 +66,10 @@ export default function Card(props) {
             {/* {<button onClick={addToCart}>Add to cart (card)</button>} */}
             {
                 <button
-                    onClick={() => props.childToParent(cardState)}
+                    onClick={() => props.addToCartButton(cardState)}
                     disabled={quantity === 0 ? true : false}
                 >
-                    Add to cart (shop func)
+                    Add to cart
                 </button>
             }
         </div>
