@@ -2,19 +2,26 @@
     display: grid;
     justify-content: space-between;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    margin: 5px 0;
+    padding: 5px 0;
+}
+
+.item:nth-child(2n) {
+    background-color: lightcyan;
+    border-radius: 5px;
 }
 
 .cart-image {
     height: 50px;
+    border-radius: 5px;
 }
 
 .cart {
     border: solid 2px teal;
     width: 40vw;
-    margin: 0 auto;
+    margin: 20px auto;
     background-color: white;
     border-radius: 15px;
+    padding: 20px;
 }
 
 .cart-card > * {
@@ -23,4 +30,36 @@
 
 .cart-card > img {
     justify-self: right;
+}
+
+.cart-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cart-empty > p,
+.trolley > p {
+    color: orange;
+    position: relative;
+    bottom: -23px;
+    height: 0px;
+    font-size: 3rem;
+    margin: 0;
+}
+
+.cart-empty > img,
+.trolley > img {
+    height: 150px;
+}
+
+.trolley {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cart-small {
+    display: flex;
+    align-items: center;
 }
