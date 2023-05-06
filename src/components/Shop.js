@@ -7,6 +7,7 @@ import cartIcon from "../assets/icons/cart.svg";
 // import { Link } from "react-router-dom";
 
 export default function Shop() {
+    // RENDER PRODUCTS ON PAGE
     const allFruits = fruitsArray.map((fruit) => (
         <Card
             key={fruit.id}
@@ -14,17 +15,19 @@ export default function Shop() {
             name={fruit.name}
             price={fruit.price}
             imageSource={fruit.image}
-            childToParent={childToParent}
+            addToCartButton={addToCartButton}
         />
     ));
 
+    // CART STATE
     const [cartQty, setCartQty] = React.useState(0);
     const [cartTotal, setCartTotal] = React.useState(0);
     const [cartItems, setCartItems] = React.useState([]);
 
+    // TOGGLE PRODUCTS/CART PAGE
     const [togglePage, setTogglePage] = React.useState(true);
 
-    function childToParent(childData) {
+    function addToCartButton(childData) {
         let qty = childData.qty;
         let tot = childData.total;
         setCartQty((prevData) => prevData + qty);
@@ -68,6 +71,37 @@ export default function Shop() {
         setTogglePage(false);
     }
 
+    // function alterCartItemQuantity(cartItem) { // REFINING PROJECT NEXT STEP
+    //     //
+    //     console.log(cartItem);
+    //     let qty = cartItem.qty;
+    //     let tot = cartItem.total;
+    //     setCartQty((prevData) => prevData + (qty - prevData));
+    //     setCartTotal((prevData) =>
+    //         (Number(prevData) + Number(tot - prevData)).toFixed(2)
+    //     );
+
+    //     const updatedItems = cartItems.map((item) => {
+    //         if (item.id === cartItem.id) {
+    //             return {
+    //                 ...item,
+    //                 qty: item.qty + (cartItem.qty - item.qty),
+    //                 total: (
+    //                     Math.round(
+    //                         (Number(item.total) +
+    //                             Number(cartItem.total - item.total)) *
+    //                             100
+    //                     ) / 100
+    //                 ).toFixed(2),
+    //             };
+    //         } else {
+    //             return item;
+    //         }
+    //     });
+    //     setCartItems(updatedItems);
+    // }
+
+    // RENDER ITEMS IN CART
     const allCartItems = cartItems.map((item) => (
         <Cart
             key={item.id}
@@ -77,30 +111,40 @@ export default function Shop() {
             imageSource={item.image}
             quantity={item.qty}
             total={item.total}
+            // alterCartItemQuantity={alterCartItemQuantity} // REFINING PROJECT NEXT STEP
         />
     ));
 
     return (
         <div>
-            {/* Shopping page
-            <p>products will be here</p> */}
-            {/* <Link to="/cart"> */}
             <div className="cart-fixed">
-                <img className="cart-icon" src={cartIcon} alt="cart-icon" />(
-                {cartQty})
+                <div className="cart-small">
+                    <img className="cart-icon" src={cartIcon} alt="cart-icon" />
+                    {/* <p> */}({cartQty}){/* </p> */}
+                </div>
                 <button onClick={() => toggleCart()}>Go to cart</button>
             </div>
-            {!togglePage && (
+            {/* {!togglePage && (
                 <button onClick={() => toggleShop()}>Back to products</button>
-            )}
-            {/* </Link> */}
+            )} */}
             {togglePage && <div className="products">{allFruits}</div>}
             {!togglePage && cartQty === 0 && (
-                <div className="cart">The cart is empty...</div>
+                <div className="cart cart-empty">
+                    <h1>The cart is empty...</h1>
+                    <p>{cartQty}</p>
+                    <img src={cartIcon} alt="cart-icon" />
+                    <button onClick={() => toggleShop()}>
+                        Back to products
+                    </button>
+                </div>
             )}
             {!togglePage && cartQty !== 0 && (
                 <div className="cart">
                     {/* The cart is NOT empty... items in cart: {cartQty} */}
+                    <div className="trolley">
+                        <p>{cartQty}</p>
+                        <img src={cartIcon} alt="cart-icon" />
+                    </div>
                     <div className="cart-card">
                         <h2> </h2>
                         <h2>Item</h2>
@@ -115,6 +159,12 @@ export default function Shop() {
                         <h2> </h2>
                         <h2>TOTAL:</h2>
                         <h2>${cartTotal}</h2>
+                    </div>
+                    <div className="buttons">
+                        <button onClick={() => toggleShop()}>
+                            Back to products
+                        </button>
+                        <button>Proceed to Checkout</button>
                     </div>
                 </div>
             )}
