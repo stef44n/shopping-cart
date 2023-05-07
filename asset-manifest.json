@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.58949ab0.css",
-    "main.js": "/static/js/main.b0ac4d42.js",
-    "static/media/pineapple.webp": "/static/media/pineapple.a5c99eb1068b4b27155a.webp",
-    "static/media/raspberry.jpeg": "/static/media/raspberry.59a20cd2ed7ba651bad8.jpeg",
-    "static/media/orange-pattern.jpg": "/static/media/orange-pattern.f471579fc0b02a5643fd.jpg",
-    "static/media/apple.jpg": "/static/media/apple.a9081282208bb9c36ddc.jpg",
-    "static/media/watermelon.avif": "/static/media/watermelon.0cd27e5c6b0758dffae3.avif",
-    "static/media/orange.avif": "/static/media/orange.8ed80a3c923a16192eca.avif",
-    "static/media/grapes.avif": "/static/media/grapes.7e851b850ec0d6a4174e.avif",
-    "index.html": "/index.html",
-    "static/media/cart.svg": "/static/media/cart.f28ce3f955834123d6eae21502540da3.svg",
-    "static/media/plus.svg": "/static/media/plus.c8b39a336d92d4c5c69f8493a4ff6af5.svg",
-    "static/media/minus.svg": "/static/media/minus.bf60699d5d18b452d77986227b0ffa5f.svg",
-    "main.58949ab0.css.map": "/static/css/main.58949ab0.css.map",
-    "main.b0ac4d42.js.map": "/static/js/main.b0ac4d42.js.map"
+    "main.css": "/shopping-cart/static/css/main.b8ad75df.css",
+    "main.js": "/shopping-cart/static/js/main.b0f7e9aa.js",
+    "static/media/pineapple.webp": "/shopping-cart/static/media/pineapple.a5c99eb1068b4b27155a.webp",
+    "static/media/raspberry.jpeg": "/shopping-cart/static/media/raspberry.59a20cd2ed7ba651bad8.jpeg",
+    "static/media/orange-pattern.jpg": "/shopping-cart/static/media/orange-pattern.f471579fc0b02a5643fd.jpg",
+    "static/media/apple.jpg": "/shopping-cart/static/media/apple.a9081282208bb9c36ddc.jpg",
+    "static/media/watermelon.avif": "/shopping-cart/static/media/watermelon.0cd27e5c6b0758dffae3.avif",
+    "static/media/orange.avif": "/shopping-cart/static/media/orange.8ed80a3c923a16192eca.avif",
+    "static/media/grapes.avif": "/shopping-cart/static/media/grapes.7e851b850ec0d6a4174e.avif",
+    "index.html": "/shopping-cart/index.html",
+    "static/media/cart.svg": "/shopping-cart/static/media/cart.f28ce3f955834123d6eae21502540da3.svg",
+    "static/media/plus.svg": "/shopping-cart/static/media/plus.c8b39a336d92d4c5c69f8493a4ff6af5.svg",
+    "static/media/minus.svg": "/shopping-cart/static/media/minus.bf60699d5d18b452d77986227b0ffa5f.svg",
+    "main.b8ad75df.css.map": "/shopping-cart/static/css/main.b8ad75df.css.map",
+    "main.b0f7e9aa.js.map": "/shopping-cart/static/js/main.b0f7e9aa.js.map"
   },
   "entrypoints": [
-    "static/css/main.58949ab0.css",
-    "static/js/main.b0ac4d42.js"
+    "static/css/main.b8ad75df.css",
+    "static/js/main.b0f7e9aa.js"
   ]
 }
